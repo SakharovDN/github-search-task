@@ -5,6 +5,10 @@ import repositoryService from '../api/repository.service';
 import { Repository } from './types';
 
 class RepositoryStore {
+  public get error() {
+    return this._error;
+  }
+
   public get favoriteRepositories() {
     return this._repositories.filter((repository) => repository.isFavorite);
   }
@@ -21,6 +25,7 @@ class RepositoryStore {
     return this._repositories.length;
   }
 
+  private _error: string | null = null;
   private _loading = false;
   private _repositories: Repository[] = [];
 
@@ -34,6 +39,7 @@ class RepositoryStore {
 
   public async searchRepositories(query: string) {
     this._repositories = [];
+    this._error = null;
 
     if (!query) {
       this._repositories = [];
@@ -42,12 +48,21 @@ class RepositoryStore {
 
     this._loading = true;
 
-    const response = await repositoryService.search(query);
+    try {
+      const response = await repositoryService.search(query);
 
-    runInAction(() => {
-      this._repositories = response.items;
-      this._loading = false;
-    });
+      runInAction(() => {
+        this._repositories = response.items;
+      });
+    } catch (error) {
+      runInAction(() => {
+        this._error = error instanceof Error ? error.message : 'Произошла ошибка при поиске репозиториев';
+      });
+    } finally {
+      runInAction(() => {
+        this._loading = false;
+      });
+    }
   }
 
   public toggleFavorite(id: Repository['id']) {
