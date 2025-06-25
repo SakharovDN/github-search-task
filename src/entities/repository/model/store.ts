@@ -2,18 +2,18 @@ import { makeAutoObservable, runInAction } from 'mobx';
 
 import repositoryService from '../api/repository.service';
 
-import { Repository, RepositorySorting } from './types';
+import { Repository } from './types';
 
 class RepositoryStore {
+  public get favoriteRepositories() {
+    return this._repositories.filter((repository) => repository.isFavorite);
+  }
+
   public get loading() {
     return this._loading;
   }
 
   public get repositories() {
-    if (this._sorting) {
-      return this.getSortedRepositories();
-    }
-
     return this._repositories;
   }
 
@@ -21,17 +21,8 @@ class RepositoryStore {
     return this._repositories.length;
   }
 
-  public get sorting() {
-    return this._sorting;
-  }
-
-  public set sorting(value: RepositorySorting | null) {
-    this._sorting = value;
-  }
-
   private _loading = false;
   private _repositories: Repository[] = [];
-  private _sorting: RepositorySorting | null = null;
 
   constructor() {
     makeAutoObservable(this);
@@ -61,16 +52,6 @@ class RepositoryStore {
     if (!repository) return;
 
     repository.isFavorite = !repository.isFavorite;
-  }
-
-  private getSortedRepositories() {
-    if (this._sorting === 'new') {
-      return this._repositories
-        .slice()
-        .sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime());
-    }
-
-    return this._repositories.slice().sort((a, b) => b.stargazers_count - a.stargazers_count);
   }
 }
 

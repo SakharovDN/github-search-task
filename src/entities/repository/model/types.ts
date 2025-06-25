@@ -19,8 +19,6 @@ export interface Repository {
   isFavorite?: boolean;
 }
 
-export type RepositorySorting = 'new' | 'stars';
-
 interface RepositoryOwner {
   id: number;
   login: string;

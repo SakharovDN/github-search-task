@@ -1,5 +1,7 @@
-export { repositoryStore } from './model/store';
-export type { Repository, RepositorySorting } from './model/types';
+export type { RepositorySorting } from './lib/repositorySorting';
+export { getSortedRepositories, repositorySortingOptions } from './lib/repositorySorting';
 
-export { RepositoriesList } from './ui/RepositoriesList/RepositoriesList';
-export { RepositorySortingSelect } from './ui/RepositorySortingSelect/RepositorySortingSelect';
+export { repositoryStore } from './model/store';
+export type { Repository } from './model/types';
+
+export { RepositoriesGrid } from './ui/RepositoriesGrid/RepositoriesGrid';

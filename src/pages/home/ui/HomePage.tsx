@@ -1,22 +1,22 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 import { observer } from 'mobx-react-lite';
 
 import { useDebounce } from '@/shared/lib/timing';
 import { Input } from '@/shared/ui/Input';
 import { Page } from '@/shared/ui/Page';
+import { Select } from '@/shared/ui/Select';
 
-import { RepositoriesList, RepositorySortingSelect, repositoryStore } from '@/entities/repository';
+import { RepositorySorting, repositorySortingOptions, repositoryStore } from '@/entities/repository';
+
+import { SearchRepositoriesGrid } from './SearchRepositoriesGrid/SearchRepositoriesGrid';
 
 import styles from './HomePage.module.scss';
 
 export const HomePage = () => {
   const [search, setSearch] = useState('pet-react-redux');
+  const [sorting, setSorting] = useState<RepositorySorting | undefined>(undefined);
   const debouncedSearch = useDebounce(search);
-
-  useEffect(() => {
-    repositoryStore.searchRepositories(debouncedSearch);
-  }, [debouncedSearch]);
 
   return (
     <Page title="Главная">
@@ -30,10 +30,15 @@ export const HomePage = () => {
 
       <div className={styles.controls}>
         <ResultString />
-        <RepositorySortingSelect />
+        <Select
+          className={styles.sortingSelect}
+          options={repositorySortingOptions}
+          value={sorting}
+          onChange={setSorting}
+        />
       </div>
 
-      <RepositoriesList />
+      <SearchRepositoriesGrid search={debouncedSearch} sorting={sorting} />
     </Page>
   );
 };
