@@ -9,12 +9,11 @@ class RepositoryStore {
     return this._repositories;
   }
 
-  public get totalCount() {
-    return this._totalCount;
+  public get repositoriesCount() {
+    return this._repositories.length;
   }
 
   private _repositories: Repository[] = [];
-  private _totalCount: number = 0;
 
   constructor() {
     makeAutoObservable(this);
@@ -23,14 +22,12 @@ class RepositoryStore {
   async searchRepositories(query: string) {
     if (!query) {
       this._repositories = [];
-      this._totalCount = 0;
       return;
     }
 
     const response = await repositoryService.search(query);
 
     runInAction(() => {
-      this._totalCount = response.total_count;
       this._repositories = response.items;
     });
   }

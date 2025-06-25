@@ -1,10 +1,14 @@
 import { useEffect, useState } from 'react';
 
+import { observer } from 'mobx-react-lite';
+
 import { useDebounce } from '@/shared/lib/timing';
 import { Input } from '@/shared/ui/Input';
 import { Page } from '@/shared/ui/Page';
 
 import { RepositoriesList, repositoryStore } from '@/entities/repository';
+
+import styles from './HomePage.module.scss';
 
 export const HomePage = () => {
   const [search, setSearch] = useState('');
@@ -16,9 +20,23 @@ export const HomePage = () => {
 
   return (
     <Page title="Главная">
-      <Input placeholder="Search" type="search" value={search} onChange={(e) => setSearch(e.target.value)} />
+      <Input
+        className={styles.searchInput}
+        placeholder="Search"
+        type="search"
+        value={search}
+        onChange={(e) => setSearch(e.target.value)}
+      />
+
+      <div>
+        <ResultString />
+      </div>
 
       <RepositoriesList />
     </Page>
   );
 };
+
+const ResultString = observer(() => {
+  return <p className={styles.resultString}>Result: {repositoryStore.repositoriesCount} repositories</p>;
+});
