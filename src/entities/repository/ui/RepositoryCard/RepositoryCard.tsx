@@ -1,5 +1,6 @@
 import { Avatar } from '@/shared/ui/Avatar';
-import { GitBranchIcon, StarIcon } from '@/shared/ui/icons';
+import { Button } from '@/shared/ui/Button';
+import { GitBranchIcon, HeartIcon, LinkIcon, StarIcon } from '@/shared/ui/icons';
 import { Tag } from '@/shared/ui/Tag';
 
 import { Repository } from '../../model/types';
@@ -28,6 +29,14 @@ export const RepositoryCard = ({ repository }: RepositoryCardProps) => {
       <div className={styles.body}>
         <p className={styles.ownerLogin}>{repository.owner.login}</p>
         <p className={styles.repositoryName}>{repository.full_name}</p>
+      </div>
+
+      <div className={styles.footer}>
+        <Button title="Add to favorites" icon={<HeartIcon />} />
+        <Button title="Copy link" icon={<LinkIcon />} />
+        <Button className={styles.moreButton} title="Open repository" appearance="accent">
+          Подробнее
+        </Button>
       </div>
     </div>
   );
