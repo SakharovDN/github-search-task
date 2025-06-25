@@ -2,6 +2,8 @@
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
+  max-width: 320px;
+  height: fit-content;
   padding: 24px;
   background-color: #fff;
   border: 1px solid #3a3a3a1f;
