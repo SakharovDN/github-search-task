@@ -45,7 +45,7 @@ export const Button = ({
     className
   );
 
-  const iconClone = icon ? cloneElement(icon, { className: styles.icon }) : null;
+  const iconClone = icon ? cloneElement(icon, { className: clsx(styles.icon, icon.props.className) }) : null;
 
   return (
     <button className={buttonStyles} disabled={disabled || loading} {...props}>
