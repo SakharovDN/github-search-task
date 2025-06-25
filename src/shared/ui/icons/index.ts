@@ -1,3 +1,4 @@
+export { default as AccountIcon } from './account.svg?react';
 export { default as ArchiveIcon } from './archive.svg?react';
 export { default as ArrowLeftIcon } from './arrowLeft.svg?react';
 export { default as ChevronDownIcon } from './chevronDown.svg?react';

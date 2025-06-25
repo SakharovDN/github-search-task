@@ -3,7 +3,7 @@ import { NavLink } from 'react-router';
 import clsx from 'clsx';
 import { observer } from 'mobx-react-lite';
 
-import { HeartIcon, SearchIcon } from '@/shared/ui/icons';
+import { AccountIcon, HeartIcon, SearchIcon } from '@/shared/ui/icons';
 
 import { repositoryStore } from '@/entities/repository';
 
@@ -19,6 +19,12 @@ export const MainHeader = () => {
 
       <div className={styles.rightContainer}>
         <FavoritesLink />
+
+        <div className={styles.accountContainer}>
+          <div className={styles.accountIconContainer}>
+            <AccountIcon />
+          </div>
+        </div>
       </div>
     </header>
   );
