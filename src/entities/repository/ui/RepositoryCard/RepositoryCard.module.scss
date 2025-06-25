@@ -1,0 +1,46 @@
+.repository-card {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+  background-color: #fff;
+  border: 1px solid #3a3a3a1f;
+  border-radius: 20px;
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.owner-login {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 16px;
+  font-weight: 600;
+  color: #3a3a3a;
+  letter-spacing: 0;
+  white-space: nowrap;
+}
+
+.repository-name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 14px;
+  font-weight: 400;
+  color: #1e89f0;
+  white-space: nowrap;
+}
+
+.header {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.avatar {
+  margin-right: auto;
+}
