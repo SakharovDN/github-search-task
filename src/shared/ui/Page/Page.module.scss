@@ -1,0 +1,12 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: calc(100dvh - var(--header-height));
+  padding: 48px 120px;
+  overflow: hidden;
+
+  &.scrollable {
+    overflow: auto;
+  }
+}
