@@ -1,6 +1,8 @@
 import { ErrorBoundary } from 'react-error-boundary';
 import { Navigate, Route, Routes } from 'react-router';
 
+import { HomePage } from '@/pages/home';
+
 import { MainHeader } from './ui/MainHeader/MainHeader';
 
 import styles from './App.module.scss';
@@ -12,7 +14,7 @@ export const App = () => {
         <MainHeader />
         <Routes>
           <Route element={<Navigate to="/" replace />} path="*" index />
-          <Route element={<div>Home</div>} path="" />
+          <Route element={<HomePage />} path="" />
         </Routes>
       </ErrorBoundary>
     </div>
