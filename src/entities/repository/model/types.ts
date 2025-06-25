@@ -16,6 +16,8 @@ export interface Repository {
   description: string | null;
 }
 
+export type RepositorySorting = 'new' | 'stars';
+
 interface RepositoryOwner {
   id: number;
   login: string;

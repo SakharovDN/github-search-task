@@ -8,3 +8,14 @@
 .search-input {
   margin-bottom: 24px;
 }
+
+.controls {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.sorting-select {
+  width: auto;
+}
