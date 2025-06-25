@@ -1,9 +1,12 @@
+import copy from 'clipboard-copy';
+import clsx from 'clsx';
 import { observer } from 'mobx-react-lite';
 
 import { Avatar } from '@/shared/ui/Avatar';
-import { ArchiveIcon, FolderIcon, GitBranchIcon, StarIcon, TerminalIcon } from '@/shared/ui/icons';
+import { Button } from '@/shared/ui/Button';
+import { ArchiveIcon, FolderIcon, GitBranchIcon, HeartIcon, LinkIcon, StarIcon, TerminalIcon } from '@/shared/ui/icons';
 
-import { Repository } from '@/entities/repository/model/types';
+import { Repository, repositoryStore } from '@/entities/repository';
 
 import { RepositoryAdditionalInfoItem } from '../RepositoryAdditionalInfoItem/RepositoryAdditionalInfoItem';
 
@@ -14,6 +17,18 @@ interface RepositoryCardProps {
 }
 
 export const RepositoryCard = observer(({ repository }: RepositoryCardProps) => {
+  const handleToggleFavorite = () => {
+    repositoryStore.toggleFavorite(repository.id);
+  };
+
+  const handleCopyLink = () => {
+    copy(repository.html_url).then(() => alert('Link copied to clipboard'));
+  };
+
+  const handleOpenRepository = () => {
+    window.open(repository.html_url, '_blank');
+  };
+
   return (
     <div className={styles.repositoryCard}>
       <h1 className={styles.login}>{repository.owner.login}</h1>
@@ -56,6 +71,22 @@ export const RepositoryCard = observer(({ repository }: RepositoryCardProps) => 
       </div>
 
       <div className={styles.divider} />
+
+      <div className={styles.footer}>
+        <Button
+          title="Add to favorites"
+          icon={<HeartIcon className={clsx(styles.favoriteIcon, repository.isFavorite && styles.active)} />}
+          onClick={handleToggleFavorite}
+        />
+        <Button title="Copy link" icon={<LinkIcon />} onClick={handleCopyLink} />
+        <Button
+          className={styles.moreButton}
+          title="Open repository"
+          appearance="accent"
+          onClick={handleOpenRepository}>
+          Открыть репозиторий
+        </Button>
+      </div>
     </div>
   );
 });
