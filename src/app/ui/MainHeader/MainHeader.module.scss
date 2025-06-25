@@ -7,10 +7,21 @@
   background-color: #3a3a3a;
 }
 
+.title-container {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-right: auto;
+}
+
 .title {
   font-size: 14px;
   font-weight: 700;
   line-height: 130%;
   color: #fff;
   letter-spacing: 0%;
+}
+
+.search-icon {
+  color: #fff;
 }
