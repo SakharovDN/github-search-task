@@ -1,3 +1,4 @@
+export { default as ArrowLeftIcon } from './arrowLeft.svg?react';
 export { default as ChevronDownIcon } from './chevronDown.svg?react';
 export { default as GitBranchIcon } from './gitBranch.svg?react';
 export { default as HeartIcon } from './heart.svg?react';
