@@ -1,69 +1,37 @@
-# React + TypeScript + Vite
+# GitHub Search Task
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Приложение для поиска репозиториев на GitHub с использованием GitHub API.
 
-Currently, two official plugins are available:
+## Настройка
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### 1. Создание токена GitHub
 
-## Expanding the ESLint configuration
+Для работы с GitHub API необходимо создать Personal Access Token:
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+1. Перейдите в [GitHub Settings > Developer settings > Personal access tokens](https://github.com/settings/tokens)
+2. Нажмите "Generate new token (classic)"
+3. Выберите необходимые разрешения (для поиска репозиториев достаточно `public_repo`)
+4. Скопируйте созданный токен
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### 2. Настройка переменных окружения
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+Создайте файл `.env` в корне проекта:
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-]);
+```env
+VITE_GITHUB_API_URL=https://api.github.com
+VITE_GITHUB_TOKEN=your_github_personal_access_token_here
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Замените `your_github_personal_access_token_here` на ваш токен.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x';
-import reactDom from 'eslint-plugin-react-dom';
+### 3. Установка зависимостей
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-]);
+```bash
+npm i
+```
+
+### 4. Запуск приложения
+
+```bash
+npm start
 ```
