@@ -1,6 +1,7 @@
 import { ErrorBoundary } from 'react-error-boundary';
 import { Navigate, Route, Routes } from 'react-router';
 
+import { FavoritesPage } from '@/pages/favorites';
 import { HomePage } from '@/pages/home';
 
 import { MainHeader } from './ui/MainHeader/MainHeader';
@@ -15,6 +16,7 @@ export const App = () => {
         <Routes>
           <Route element={<Navigate to="/" replace />} path="*" index />
           <Route element={<HomePage />} path="" />
+          <Route element={<FavoritesPage />} path="favorites" />
         </Routes>
       </ErrorBoundary>
     </div>

@@ -1,0 +1,17 @@
+.favorites-string {
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 100%;
+  letter-spacing: 0;
+}
+
+.controls {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.sorting-select {
+  width: auto;
+}
