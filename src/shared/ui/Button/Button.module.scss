@@ -28,6 +28,15 @@
     width: 100%;
   }
 
+  &.medium {
+    height: 40px;
+
+    .icon {
+      width: 30px;
+      height: 30px;
+    }
+  }
+
   &.rtl {
     flex-direction: row-reverse;
   }

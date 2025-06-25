@@ -16,17 +16,20 @@ import styles from './Button.module.scss';
 export interface ButtonProps extends DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement> {
   block?: boolean;
   loading?: boolean;
+  size?: ButtonSize;
   iconPosition?: IconPosition;
   appearance?: ButtonAppearance;
   icon?: ReactElement<SVGProps<SVGSVGElement>, JSXElementConstructor<SVGProps<SVGSVGElement>> | string>;
 }
 
 type ButtonAppearance = 'accent' | 'primary';
+type ButtonSize = 'medium' | 'small';
 type IconPosition = 'end' | 'start';
 
 export const Button = ({
   appearance = 'primary',
   iconPosition = 'start',
+  size = 'medium',
   className,
   children,
   disabled,
@@ -38,6 +41,7 @@ export const Button = ({
   const buttonStyles = clsx(
     styles.button,
     styles[appearance],
+    styles[size],
     block && styles.block,
     loading && styles.loading,
     disabled && styles.disabled,

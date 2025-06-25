@@ -48,17 +48,20 @@ export const RepositoryCard = observer(({ repository }: RepositoryCardProps) => 
         <Button
           title="Add to favorites"
           icon={<HeartIcon className={clsx(styles.favoriteIcon, repository.isFavorite && styles.active)} />}
+          size="small"
           onClick={handleToggleFavorite}
         />
         <Button
           title="Copy link"
           icon={<LinkIcon />}
+          size="small"
           onClick={() => copy(repository.html_url).then(() => alert('Link copied to clipboard'))}
         />
         <Button
           className={styles.moreButton}
           title="Open repository"
           appearance="accent"
+          size="small"
           onClick={() => navigate(`/repositories/${repository.id}`)}>
           Подробнее
         </Button>
