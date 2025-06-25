@@ -25,3 +25,49 @@
 .search-icon {
   color: #fff;
 }
+
+.right-container {
+  display: flex;
+  gap: 32px;
+  align-items: center;
+}
+
+.favorites-link {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  transition: background-color 0.2s ease;
+
+  &.active {
+    background-color: #ffffff1f;
+  }
+}
+
+.favorites-icon {
+  width: 20px;
+  height: 20px;
+  color: #fff;
+  fill: #fff;
+}
+
+.favorites-count {
+  position: absolute;
+  top: -2px;
+  right: -3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 15px;
+  padding: 2px 4px;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 90%;
+  color: #fff;
+  letter-spacing: 0%;
+  background-color: #d44333;
+  border-radius: 4px;
+}
