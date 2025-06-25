@@ -28,6 +28,10 @@ class RepositoryStore {
     makeAutoObservable(this);
   }
 
+  public getRepositoryById(id: Repository['id']): Repository | undefined {
+    return this._repositories.find((repository) => repository.id === id);
+  }
+
   public async searchRepositories(query: string) {
     this._repositories = [];
 

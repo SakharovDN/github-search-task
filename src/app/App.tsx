@@ -3,6 +3,7 @@ import { Navigate, Route, Routes } from 'react-router';
 
 import { FavoritesPage } from '@/pages/favorites';
 import { HomePage } from '@/pages/home';
+import { RepositoryPage } from '@/pages/repository';
 
 import { MainHeader } from './ui/MainHeader/MainHeader';
 
@@ -17,6 +18,7 @@ export const App = () => {
           <Route element={<Navigate to="/" replace />} path="*" index />
           <Route element={<HomePage />} path="" />
           <Route element={<FavoritesPage />} path="favorites" />
+          <Route element={<RepositoryPage />} path="repositories/:repositoryId" />
         </Routes>
       </ErrorBoundary>
     </div>

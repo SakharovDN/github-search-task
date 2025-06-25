@@ -1,3 +1,5 @@
+import { useNavigate } from 'react-router';
+
 import copy from 'clipboard-copy';
 import clsx from 'clsx';
 import { observer } from 'mobx-react-lite';
@@ -17,6 +19,8 @@ interface RepositoryCardProps {
 }
 
 export const RepositoryCard = observer(({ repository }: RepositoryCardProps) => {
+  const navigate = useNavigate();
+
   const handleToggleFavorite = () => {
     repositoryStore.toggleFavorite(repository.id);
   };
@@ -51,7 +55,11 @@ export const RepositoryCard = observer(({ repository }: RepositoryCardProps) => 
           icon={<LinkIcon />}
           onClick={() => copy(repository.html_url).then(() => alert('Link copied to clipboard'))}
         />
-        <Button className={styles.moreButton} title="Open repository" appearance="accent">
+        <Button
+          className={styles.moreButton}
+          title="Open repository"
+          appearance="accent"
+          onClick={() => navigate(`/repositories/${repository.id}`)}>
           Подробнее
         </Button>
       </div>
