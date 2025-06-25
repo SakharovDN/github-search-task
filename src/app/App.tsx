@@ -1,11 +1,11 @@
 import { ErrorBoundary } from 'react-error-boundary';
 import { Navigate, Route, Routes } from 'react-router';
 
+import { MainHeader } from '@/widgets/MainHeader';
+
 import { FavoritesPage } from '@/pages/favorites';
 import { HomePage } from '@/pages/home';
 import { RepositoryPage } from '@/pages/repository';
-
-import { MainHeader } from './ui/MainHeader/MainHeader';
 
 import styles from './App.module.scss';
 
