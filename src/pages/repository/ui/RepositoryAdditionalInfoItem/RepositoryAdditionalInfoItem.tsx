@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 
-import styles from './RepositoryAdditionalinfoItem.module.scss';
+import styles from './RepositoryAdditionalInfoItem.module.scss';
 
 interface RepositoryAdditionalInfoItemProps {
   title: ReactNode;
