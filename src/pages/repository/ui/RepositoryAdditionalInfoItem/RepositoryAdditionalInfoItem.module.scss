@@ -1,0 +1,42 @@
+.info-item {
+  display: flex;
+  flex: 1;
+  gap: 16px;
+  align-items: center;
+  width: 100%;
+  padding: 16px;
+  background-color: #3a3a3a0a;
+  border-radius: 20px;
+}
+
+.info-item-icon-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background-color: #3a3a3a14;
+  border-radius: 50%;
+}
+
+.info-item-content {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.info-item-title {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 115%;
+  color: #84868c;
+  letter-spacing: 0;
+}
+
+.info-item-value {
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 115%;
+  color: #3a3a3a;
+  letter-spacing: 0;
+}

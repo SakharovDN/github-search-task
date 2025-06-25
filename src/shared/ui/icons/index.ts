@@ -1,7 +1,11 @@
+export { default as ArchiveIcon } from './archive.svg?react';
 export { default as ArrowLeftIcon } from './arrowLeft.svg?react';
 export { default as ChevronDownIcon } from './chevronDown.svg?react';
+export { default as CreateIcon } from './create.svg?react';
+export { default as FolderIcon } from './folder.svg?react';
 export { default as GitBranchIcon } from './gitBranch.svg?react';
 export { default as HeartIcon } from './heart.svg?react';
 export { default as LinkIcon } from './link.svg?react';
 export { default as SearchIcon } from './search.svg?react';
 export { default as StarIcon } from './star.svg?react';
+export { default as TerminalIcon } from './terminal.svg?react';
