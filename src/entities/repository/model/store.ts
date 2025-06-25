@@ -37,7 +37,7 @@ class RepositoryStore {
     makeAutoObservable(this);
   }
 
-  async searchRepositories(query: string) {
+  public async searchRepositories(query: string) {
     this._repositories = [];
 
     if (!query) {
@@ -53,6 +53,14 @@ class RepositoryStore {
       this._repositories = response.items;
       this._loading = false;
     });
+  }
+
+  public toggleFavorite(id: Repository['id']) {
+    const repository = this._repositories.find((repository) => repository.id === id);
+
+    if (!repository) return;
+
+    repository.isFavorite = !repository.isFavorite;
   }
 
   private getSortedRepositories() {
