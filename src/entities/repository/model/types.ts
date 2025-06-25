@@ -4,6 +4,7 @@ export interface Repository {
   url: string;
   score: number;
   forks: number;
+  html_url: string;
   full_name: string;
   archived: boolean;
   created_at: string;

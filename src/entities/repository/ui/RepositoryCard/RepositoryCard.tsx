@@ -1,3 +1,4 @@
+import copy from 'clipboard-copy';
 import clsx from 'clsx';
 import { observer } from 'mobx-react-lite';
 
@@ -45,7 +46,11 @@ export const RepositoryCard = observer(({ repository }: RepositoryCardProps) => 
           icon={<HeartIcon className={clsx(styles.favoriteIcon, repository.isFavorite && styles.active)} />}
           onClick={handleToggleFavorite}
         />
-        <Button title="Copy link" icon={<LinkIcon />} />
+        <Button
+          title="Copy link"
+          icon={<LinkIcon />}
+          onClick={() => copy(repository.html_url).then(() => alert('Link copied to clipboard'))}
+        />
         <Button className={styles.moreButton} title="Open repository" appearance="accent">
           Подробнее
         </Button>
