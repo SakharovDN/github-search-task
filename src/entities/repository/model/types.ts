@@ -9,8 +9,15 @@ export interface Repository {
   created_at: string;
   updated_at: string;
   forks_count: number;
+  owner: RepositoryOwner;
   homepage: string | null;
   language: string | null;
   stargazers_count: number;
   description: string | null;
+}
+
+interface RepositoryOwner {
+  id: number;
+  login: string;
+  avatar_url: string;
 }
