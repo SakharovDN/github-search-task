@@ -6,14 +6,11 @@ import { BackButton } from '@/shared/ui/BackButton';
 import { Page } from '@/shared/ui/Page';
 import { Select } from '@/shared/ui/Select';
 
-import {
-  getSortedRepositories,
-  RepositoriesGrid,
-  RepositorySorting,
-  repositorySortingOptions,
-} from '@/entities/repository';
+import { getSortedRepositories, RepositorySorting, repositorySortingOptions } from '@/entities/repository';
 
 import { favoritesStore } from '@/features/addRepositoryToFavorites';
+
+import { RepositoriesGrid } from '@/widgets/RepositoriesGrid';
 
 import styles from './FavoritesPage.module.scss';
 

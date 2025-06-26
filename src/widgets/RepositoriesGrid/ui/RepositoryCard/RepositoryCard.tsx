@@ -7,10 +7,10 @@ import { Button } from '@/shared/ui/Button';
 import { GitBranchIcon, StarIcon } from '@/shared/ui/icons';
 import { Tag } from '@/shared/ui/Tag';
 
+import { Repository } from '@/entities/repository';
+
 import { AddToFavoritesButton } from '@/features/addRepositoryToFavorites';
 import { CopyRepositoryUrlButton } from '@/features/copyRepositoryUrl';
-
-import { Repository } from '../../model/types';
 
 import styles from './RepositoryCard.module.scss';
 

@@ -1,7 +1,8 @@
 import { observer } from 'mobx-react-lite';
 
-import { Repository } from '../../model/types';
-import { RepositoryCard } from '../RepositoryCard/RepositoryCard';
+import { Repository } from '@/entities/repository';
+
+import { RepositoryCard } from './RepositoryCard/RepositoryCard';
 
 import styles from './RepositoriesGrid.module.scss';
 

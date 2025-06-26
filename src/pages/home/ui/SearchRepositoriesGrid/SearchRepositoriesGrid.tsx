@@ -4,7 +4,9 @@ import { observer } from 'mobx-react-lite';
 
 import { Loader } from '@/shared/ui/Loader';
 
-import { getSortedRepositories, RepositoriesGrid, RepositorySorting, repositoryStore } from '@/entities/repository';
+import { getSortedRepositories, RepositorySorting, repositoryStore } from '@/entities/repository';
+
+import { RepositoriesGrid } from '@/widgets/RepositoriesGrid';
 
 interface SearchRepositoriesGridProps {
   search: string;
