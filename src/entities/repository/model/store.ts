@@ -1,16 +1,21 @@
 import { makeAutoObservable, runInAction } from 'mobx';
+import { computedFn } from 'mobx-utils';
 
 import repositoryService from '../api/repository.service';
 
 import { Repository } from './types';
 
 class RepositoryStore {
+  private _favoriteIds: Set<Repository['id']>;
+
+  public isFavorite = computedFn((id: Repository['id']) => this._favoriteIds.has(id));
+
   public get error() {
     return this._error;
   }
 
   public get favoriteRepositories() {
-    return this._repositories.filter((repository) => repository.isFavorite);
+    return this._repositories.filter((repository) => this.isFavorite(repository.id));
   }
 
   public get loading() {
@@ -25,11 +30,17 @@ class RepositoryStore {
     return this._repositories.length;
   }
 
-  private _error: string | null = null;
-  private _loading = false;
-  private _repositories: Repository[] = [];
+  private _error: string | null;
+
+  private _loading: boolean;
+
+  private _repositories: Repository[];
 
   constructor() {
+    this._favoriteIds = new Set(JSON.parse(localStorage.getItem('favoriteIds') || '[]'));
+    this._repositories = [];
+    this._error = null;
+    this._loading = false;
     makeAutoObservable(this);
   }
 
@@ -66,11 +77,13 @@ class RepositoryStore {
   }
 
   public toggleFavorite(id: Repository['id']) {
-    const repository = this._repositories.find((repository) => repository.id === id);
+    if (this._favoriteIds.has(id)) {
+      this._favoriteIds.delete(id);
+    } else {
+      this._favoriteIds.add(id);
+    }
 
-    if (!repository) return;
-
-    repository.isFavorite = !repository.isFavorite;
+    localStorage.setItem('favoriteIds', JSON.stringify(Array.from(this._favoriteIds)));
   }
 }
 

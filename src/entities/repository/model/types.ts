@@ -15,9 +15,6 @@ export interface Repository {
   language: string | null;
   stargazers_count: number;
   description: string | null;
-
-  // custom
-  isFavorite?: boolean;
 }
 
 interface RepositoryOwner {

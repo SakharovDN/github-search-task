@@ -47,7 +47,11 @@ export const RepositoryCard = observer(({ repository }: RepositoryCardProps) => 
       <div className={styles.footer}>
         <Button
           title="Add to favorites"
-          icon={<HeartIcon className={clsx(styles.favoriteIcon, repository.isFavorite && styles.active)} />}
+          icon={
+            <HeartIcon
+              className={clsx(styles.favoriteIcon, repositoryStore.isFavorite(repository.id) && styles.active)}
+            />
+          }
           size="small"
           onClick={handleToggleFavorite}
         />
