@@ -1,14 +1,14 @@
 import { useNavigate } from 'react-router';
 
-import copy from 'clipboard-copy';
 import { observer } from 'mobx-react-lite';
 
 import { Avatar } from '@/shared/ui/Avatar';
 import { Button } from '@/shared/ui/Button';
-import { GitBranchIcon, LinkIcon, StarIcon } from '@/shared/ui/icons';
+import { GitBranchIcon, StarIcon } from '@/shared/ui/icons';
 import { Tag } from '@/shared/ui/Tag';
 
 import { AddToFavoritesButton } from '@/features/addRepositoryToFavorites';
+import { CopyRepositoryUrlButton } from '@/features/copyRepositoryUrl';
 
 import { Repository } from '../../model/types';
 
@@ -42,12 +42,7 @@ export const RepositoryCard = observer(({ repository }: RepositoryCardProps) => 
 
       <div className={styles.footer}>
         <AddToFavoritesButton repositoryId={repository.id} size="small" />
-        <Button
-          title="Copy link"
-          icon={<LinkIcon />}
-          size="small"
-          onClick={() => copy(repository.html_url).then(() => alert('Link copied to clipboard'))}
-        />
+        <CopyRepositoryUrlButton repositoryUrl={repository.html_url} size="small" />
         <Button
           className={styles.moreButton}
           title="Open repository"
