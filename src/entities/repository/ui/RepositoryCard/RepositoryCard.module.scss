@@ -55,15 +55,3 @@
 .more-button {
   margin-left: auto;
 }
-
-.favorite-icon {
-  fill: transparent;
-  transition:
-    color 0.4s ease,
-    fill 0.4s ease;
-
-  &.active {
-    color: #d44333;
-    fill: #d44333;
-  }
-}

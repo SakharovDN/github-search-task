@@ -1,12 +1,11 @@
 import copy from 'clipboard-copy';
-import clsx from 'clsx';
 import { observer } from 'mobx-react-lite';
 
 import { Avatar } from '@/shared/ui/Avatar';
 import { Button } from '@/shared/ui/Button';
-import { ArchiveIcon, FolderIcon, GitBranchIcon, HeartIcon, LinkIcon, StarIcon, TerminalIcon } from '@/shared/ui/icons';
+import { ArchiveIcon, FolderIcon, GitBranchIcon, LinkIcon, StarIcon, TerminalIcon } from '@/shared/ui/icons';
 
-import { Repository, repositoryStore } from '@/entities/repository';
+import { AddToFavoritesButton, Repository } from '@/entities/repository';
 
 import { RepositoryAdditionalInfoItem } from '../RepositoryAdditionalInfoItem/RepositoryAdditionalInfoItem';
 
@@ -17,10 +16,6 @@ interface RepositoryCardProps {
 }
 
 export const RepositoryCard = observer(({ repository }: RepositoryCardProps) => {
-  const handleToggleFavorite = () => {
-    repositoryStore.toggleFavorite(repository.id);
-  };
-
   const handleCopyLink = () => {
     copy(repository.html_url).then(() => alert('Link copied to clipboard'));
   };
@@ -73,15 +68,7 @@ export const RepositoryCard = observer(({ repository }: RepositoryCardProps) => 
       <div className={styles.divider} />
 
       <div className={styles.footer}>
-        <Button
-          title="Add to favorites"
-          icon={
-            <HeartIcon
-              className={clsx(styles.favoriteIcon, repositoryStore.isFavorite(repository.id) && styles.active)}
-            />
-          }
-          onClick={handleToggleFavorite}
-        />
+        <AddToFavoritesButton repositoryId={repository.id} />
         <Button title="Copy link" icon={<LinkIcon />} onClick={handleCopyLink} />
         <Button
           className={styles.moreButton}

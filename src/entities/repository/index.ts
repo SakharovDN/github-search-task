@@ -4,4 +4,5 @@ export { getSortedRepositories, repositorySortingOptions } from './lib/repositor
 export { repositoryStore } from './model/store';
 export type { Repository } from './model/types';
 
+export { AddToFavoritesButton } from './ui/AddToFavoritesButton/AddToFavoritesButton';
 export { RepositoriesGrid } from './ui/RepositoriesGrid/RepositoriesGrid';

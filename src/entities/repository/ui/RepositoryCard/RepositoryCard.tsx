@@ -1,16 +1,15 @@
 import { useNavigate } from 'react-router';
 
 import copy from 'clipboard-copy';
-import clsx from 'clsx';
 import { observer } from 'mobx-react-lite';
 
 import { Avatar } from '@/shared/ui/Avatar';
 import { Button } from '@/shared/ui/Button';
-import { GitBranchIcon, HeartIcon, LinkIcon, StarIcon } from '@/shared/ui/icons';
+import { GitBranchIcon, LinkIcon, StarIcon } from '@/shared/ui/icons';
 import { Tag } from '@/shared/ui/Tag';
 
-import { repositoryStore } from '../../model/store';
 import { Repository } from '../../model/types';
+import { AddToFavoritesButton } from '../AddToFavoritesButton/AddToFavoritesButton';
 
 import styles from './RepositoryCard.module.scss';
 
@@ -20,10 +19,6 @@ interface RepositoryCardProps {
 
 export const RepositoryCard = observer(({ repository }: RepositoryCardProps) => {
   const navigate = useNavigate();
-
-  const handleToggleFavorite = () => {
-    repositoryStore.toggleFavorite(repository.id);
-  };
 
   return (
     <div className={styles.repositoryCard}>
@@ -45,16 +40,7 @@ export const RepositoryCard = observer(({ repository }: RepositoryCardProps) => 
       </div>
 
       <div className={styles.footer}>
-        <Button
-          title="Add to favorites"
-          icon={
-            <HeartIcon
-              className={clsx(styles.favoriteIcon, repositoryStore.isFavorite(repository.id) && styles.active)}
-            />
-          }
-          size="small"
-          onClick={handleToggleFavorite}
-        />
+        <AddToFavoritesButton repositoryId={repository.id} size="small" />
         <Button
           title="Copy link"
           icon={<LinkIcon />}
