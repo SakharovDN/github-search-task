@@ -8,8 +8,9 @@ import { Button } from '@/shared/ui/Button';
 import { GitBranchIcon, LinkIcon, StarIcon } from '@/shared/ui/icons';
 import { Tag } from '@/shared/ui/Tag';
 
+import { AddToFavoritesButton } from '@/features/addRepositoryToFavorites';
+
 import { Repository } from '../../model/types';
-import { AddToFavoritesButton } from '../AddToFavoritesButton/AddToFavoritesButton';
 
 import styles from './RepositoryCard.module.scss';
 

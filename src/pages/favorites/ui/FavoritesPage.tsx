@@ -11,15 +11,16 @@ import {
   RepositoriesGrid,
   RepositorySorting,
   repositorySortingOptions,
-  repositoryStore,
 } from '@/entities/repository';
+
+import { favoritesStore } from '@/features/addRepositoryToFavorites';
 
 import styles from './FavoritesPage.module.scss';
 
 export const FavoritesPage = observer(() => {
   const [sorting, setSorting] = useState<RepositorySorting | undefined>(undefined);
 
-  const sortedRepositories = getSortedRepositories(repositoryStore.favoriteRepositories, sorting);
+  const sortedRepositories = getSortedRepositories(favoritesStore.favoriteRepositories, sorting);
 
   return (
     <Page title="Избранное">
@@ -41,5 +42,5 @@ export const FavoritesPage = observer(() => {
 });
 
 const FavoritesString = observer(() => {
-  return <p className={styles.favoritesString}>Favorites: {repositoryStore.favoriteRepositories.length}</p>;
+  return <p className={styles.favoritesString}>Favorites: {favoritesStore.favoriteRepositories.length}</p>;
 });

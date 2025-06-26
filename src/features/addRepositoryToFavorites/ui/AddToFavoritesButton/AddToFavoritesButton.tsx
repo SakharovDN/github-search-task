@@ -4,7 +4,7 @@ import { observer } from 'mobx-react-lite';
 import { Button, ButtonProps } from '@/shared/ui/Button';
 import { HeartIcon } from '@/shared/ui/icons';
 
-import { repositoryStore } from '@/entities/repository/model/store';
+import { favoritesStore } from '../../model/store';
 
 import styles from './AddToFavoritesButton.module.scss';
 
@@ -15,14 +15,14 @@ interface AddToFavoritesButtonProps {
 
 export const AddToFavoritesButton = observer(({ repositoryId, size }: AddToFavoritesButtonProps) => {
   const handleToggleFavorite = () => {
-    repositoryStore.toggleFavorite(repositoryId);
+    favoritesStore.toggleFavorite(repositoryId);
   };
 
   return (
     <Button
       title="Add to favorites"
       icon={
-        <HeartIcon className={clsx(styles.favoriteIcon, repositoryStore.isFavorite(repositoryId) && styles.active)} />
+        <HeartIcon className={clsx(styles.favoriteIcon, favoritesStore.isFavorite(repositoryId) && styles.active)} />
       }
       size={size}
       onClick={handleToggleFavorite}

@@ -5,7 +5,7 @@ import { observer } from 'mobx-react-lite';
 
 import { AccountIcon, HeartIcon, SearchIcon } from '@/shared/ui/icons';
 
-import { repositoryStore } from '@/entities/repository';
+import { favoritesStore } from '@/features/addRepositoryToFavorites';
 
 import styles from './MainHeader.module.scss';
 
@@ -31,7 +31,7 @@ export const MainHeader = () => {
 };
 
 const FavoritesLink = observer(() => {
-  const favoritesLength = repositoryStore.favoriteRepositories.length;
+  const favoritesLength = favoritesStore.favoriteRepositories.length;
 
   return (
     <NavLink className={({ isActive }) => clsx(styles.favoritesLink, isActive && styles.active)} to="/favorites">

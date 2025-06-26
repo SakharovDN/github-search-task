@@ -5,7 +5,9 @@ import { Avatar } from '@/shared/ui/Avatar';
 import { Button } from '@/shared/ui/Button';
 import { ArchiveIcon, FolderIcon, GitBranchIcon, LinkIcon, StarIcon, TerminalIcon } from '@/shared/ui/icons';
 
-import { AddToFavoritesButton, Repository } from '@/entities/repository';
+import { Repository } from '@/entities/repository';
+
+import { AddToFavoritesButton } from '@/features/addRepositoryToFavorites';
 
 import { RepositoryAdditionalInfoItem } from '../RepositoryAdditionalInfoItem/RepositoryAdditionalInfoItem';
 
