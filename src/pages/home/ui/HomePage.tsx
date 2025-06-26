@@ -14,7 +14,7 @@ import { SearchRepositoriesGrid } from './SearchRepositoriesGrid/SearchRepositor
 import styles from './HomePage.module.scss';
 
 export const HomePage = () => {
-  const [search, setSearch] = useState('pet-react-redux');
+  const [search, setSearch] = useState('');
   const [sorting, setSorting] = useState<RepositorySorting | undefined>(undefined);
   const debouncedSearch = useDebounce(search);
 
