@@ -4,20 +4,20 @@ import { computedFn } from 'mobx-utils';
 import { Repository, repositoryStore, RepositoryStore } from '@/entities/repository';
 
 class FavoritesStore {
+  private _repositoriesStore: RepositoryStore;
   private _favoriteIds: Set<Repository['id']>;
-  public isFavorite = computedFn((id: Repository['id']) => this._favoriteIds.has(id));
 
   public get favoriteRepositories() {
     return this._repositoriesStore.repositories.filter((repository) => this.isFavorite(repository.id));
   }
-
-  private _repositoriesStore: RepositoryStore;
 
   constructor(repositoriesStore: RepositoryStore) {
     this._repositoriesStore = repositoriesStore;
     this._favoriteIds = new Set(JSON.parse(localStorage.getItem('favoriteIds') || '[]'));
     makeAutoObservable(this);
   }
+
+  public isFavorite = computedFn((id: Repository['id']) => this._favoriteIds.has(id));
 
   public toggleFavorite(id: Repository['id']) {
     if (this._favoriteIds.has(id)) {

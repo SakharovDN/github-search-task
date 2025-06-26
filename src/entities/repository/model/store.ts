@@ -5,13 +5,9 @@ import repositoryService from '../api/repository.service';
 import { Repository } from './types';
 
 export class RepositoryStore {
-  public get error() {
-    return this._error;
-  }
-
-  public get loading() {
-    return this._loading;
-  }
+  private _repositories: Repository[];
+  private _error: string | null;
+  private _loading: boolean;
 
   public get repositories() {
     return this._repositories;
@@ -21,11 +17,13 @@ export class RepositoryStore {
     return this._repositories.length;
   }
 
-  private _error: string | null;
+  public get error() {
+    return this._error;
+  }
 
-  private _loading: boolean;
-
-  private _repositories: Repository[];
+  public get loading() {
+    return this._loading;
+  }
 
   constructor() {
     this._repositories = [];

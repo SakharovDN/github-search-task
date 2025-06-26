@@ -44,6 +44,7 @@ export default [
     rules: {
       'perfectionist/sort-enums': 'off',
       'perfectionist/sort-objects': 'off',
+      'perfectionist/sort-classes': 'off',
       'perfectionist/sort-imports': [
         'error',
         {
